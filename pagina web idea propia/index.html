@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series para recomendar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: gold;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            background-color: black;
+            padding: 10px;
+        }
+
+        #logo {
+            width: 100px; /* Ajusta el tamaño de tu logo */
+            height: auto;
+        }
+
+        #title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 10px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        #menu {
+            position: sticky;
+            top: 0;
+            background-color: #333; /* Cambia el color de fondo del menú */
+            z-index: 1;
+            padding: 10px 0;
+        }
+
+        #menu a {
+            text-decoration: none;
+            color: gold;
+            font-weight: bold;
+            padding: 10px 20px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .column {
+            flex-basis: calc(33.33% - 20px);
+            background-color: #333; /* Cambia el color de fondo de las columnas */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .column img {
+            width: 100%;
+            height: auto;
+        }
+
+        .ver-mas {
+            background-color: gold; /* Cambia el color del botón "Ver Más" */
+            color: black; /* Cambia el color del texto del botón "Ver Más" */
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .modal-content {
+            background-color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .cerrar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.png" alt="Logo de la página">
+        <h1 id="title">Series para recomendar</h1>
+    </div>
+    <!-- Inicio de la primera fila -->
+    <div class="row">
+        <!-- Columna 1 -->
+        <div class="column">
+            <img src="logo1.jpeg" alt="Arrow">
+            <h2>Arrow</h2>
+            <p>En esta serie basada en "Flecha Verde" de DC Comics, un rico playboy se convierte en un vengativo superhéroe que lucha por su ciudad armado con solo un arco y flechas.</p>
+            <button class="ver-mas" onclick="mostrarDetalle(1)">Ver Más</button>
+        </div>
+        
+        <!-- Columna 2 -->
+        <div class="column">
+            <img src="logo2.jpg" alt="The flash">
+            <h2>The Flash</h2>
+            <p>Un policía forense llamado Barry Allen (Grang Gustin) consigue el don de una velocidad sobrehumana tras ser golpeado por un rayo al tiempo que explota un acelerador de partículas.
+                Tras unos meses en coma, Barry descubre esa habilidad que utiliza para luchar contra el crimen con el nombre de Flash, un héroe enmascarado vestido de rojo que colabora con el equipo de Laboratorios Star.</p>
+            <button class="ver-mas" onclick="mostrarDetalle(2)">Ver Más</button>
+        </div>
+        
+        <!-- Columna 3 -->
+        <div class="column">
+            <img src="game of thrones.jpeg" alt="game of thrones">
+            <h2>Game of Thrones</h2>
+            <p>"Game of Thrones" es una serie de televisión basada en la serie de novelas "Canción de hielo y fuego" escritas por George R.R. Martin. La serie se desarrolla en un mundo ficticio medieval y presenta una trama compleja llena de intriga política, traición, guerra y elementos fantásticos. Aquí tienes una sinopsis general de la trama: La serie se desarrolla en el continente de Westeros, un lugar dividido en varios reinos gobernados por diferentes casas nobles. La trama principal se centra en la lucha por el Trono de Hierro, el trono central de Westeros, que está en disputa entre varias casas nobles.</p>
+            <button class="ver-mas" onclick="mostrarDetalle(3)">Ver Más</button>
+        </div>
+    </div>
+    <!-- Fin de la primera fila -->
+
+    <!-- Aquí puedes añadir más filas y columnas -->
+    <div class="row">
+        <!-- Columna 1 -->
+        <div class="column">
+            <img src="peaky blinders.jpeg" alt="Peaky Blinders">
+            <h2>Peaky Blinders</h2>
+            <p>Birmingham, 1939. Thomas Shelby es el violento líder de una conocida banda; un jefe del crimen organizado dispuesto a llegar a lo más alto sin importar el precio.</p>
+            <button class="ver-mas" onclick="mostrarDetalle(4)">Ver Más</button>
+        </div>
+        
+        <!-- Columna 2 -->
+        <div class="column">
+            <img src="the boys.jpeg" alt="The Boys">
+            <h2>The Boys</h2>
+            <p>The Boys es una serie de televisión web estadounidense de superhéroes desarrollada por Eric Kripke para Prime Video. Basada en el cómic del mismo nombre de Garth Ennis y Darick Robertson, sigue al equipo homónimo de justicieros en su lucha contra diversos individuos con superpoderes que abusan de sus habilidades.</p>
+            <button class="ver-mas" onclick="mostrarDetalle(5)">Ver Más</button>
+        </div>
+        
+        <!-- Columna 3 -->
+        <div class="column">
+            <img src="los 100.png" alt="The 100">
+            <h2>The 100</h2>
+            <p>La serie sigue a un grupo de sobrevivientes en el posapocalípsis, principalmente a un grupo de adolescentes criminales, incluidos Clarke Griffin , Finn Collins , Bellamy Blake, Octavia Blake, Jasper Jordan, Monty Green, Raven Reyes (Lindsey Morgan), John Murphy (Richard Harmon) y Wells Jaha (Eli Goree). Se encuentran entre las primeras personas de un hábitat espacial, el Arca, en regresar a la Tierra después de un devastador apocalipsis nuclear. Otros personajes principales incluyen a la Dra. Abby Griffin, la madre de Clarke; Marcus Kane, un miembro del consejo en el Arca; y Thelonious Jaha, canciller del Arca y padre de Wells.</p>
+            <button class="ver-mas" onclick="mostrarDetalle(6)">Ver Más</button>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Columna 1 -->
+        <div class="column">
+            <img src="avatar la leyenda de ang.png" alt="Avatar: la leyenda de Aang">
+            <h2>Avatar: la leyenda de Aang</h2>
+            <p>La serie se centra en el viaje de Aang, de 12 años, el Avatar actual y último superviviente de su nación, los Nómadas del Aire, junto con sus amigos Sokka, Katara y más tarde Toph, mientras se esfuerzan por poner fin a la guerra de la Nación del Fuego contra las otras naciones del mundo. También sigue la historia de Zuko, el príncipe exiliado de la Nación del Fuego, que busca restaurar su honor perdido capturando a Aang, acompañado por su sabio tío Iroh, y más tarde, la de su ambiciosa hermana Azula.</p>
+            <button class="ver-mas" onclick="mostrarDetalle(7)">Ver Más</button>
+        </div>
+        
+        <!-- Columna 2 -->
+        <div class="column">
+            <img src="final space.jpeg" alt="Final Space">
+            <h2>Final Space</h2>
+            <p>Final Space fue una serie animada para adultos estadounidense de ciencia ficción, emitida por la cadena de televisión TBS y Adult Swim. Fue creada por Olan Rogers y desarrollada junto a David Sacks, como showrunner. La serie relata las aventuras de un prisionero intergalactico, Gary Goodspeed, y su amigo alienígena, Mooncake, cuando intentan resolver el misterio del «Final Space»</p>
+            <button class="ver-mas" onclick="mostrarDetalle(8)">Ver Más</button>
+        </div>
+        
+        <!-- Columna 3 -->
+        <div class="column">
+            <img src="moral orel.jpeg" alt="Moral Orel">
+            <h2>Moral Orel</h2>
+            <p>Moral Orel es una serie estadounidense animada para adultos en stop-motion de Adult Swim, la cual originalmente se emitida desde el 13 de diciembre de 2005, antes de que fuera oficialmente emitido desde el 23 de enero de 2006 hasta el 18 de enero de 2009. La serie es una sátira de los arquetipos de la vida suburbana del centro de los Estados Unidos, la cultura WASP moderna, el alcoholismo y el fundamentalismo religioso. Inicialmente siendo una serie de humor negro, que satirizaba lo ya mencionado, la serie toma un giro más oscuro a partir de los últimos dos episodios de la segunda temporada y el resto de la tercera temporada, que toca las angustiosas consecuencias emocionales de la disfunción provocada por los vecinos de Moralton.</p>
+            <button class="ver-mas" onclick="mostrarDetalle(9)">Ver Más</button>
+        </div>
+    </div>
+    <!-- Ventana emergente (modal) -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="cerrar" onclick="cerrarDetalle()">&times;</span>
+            <img id="modal-imagen" src="" alt="Imagen Detalle">
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-descripcion"></p>
+            <a id="modal-link" href="#" target="_blank">Ver Trailer</a>
+        </div>
+    </div>
+
+    <script>
+        function mostrarDetalle(id) {
+            var modal = document.getElementById("modal");
+            modal.style.display = "block";
+
+            var titulo = document.getElementById("modal-titulo");
+            var descripcion = document.getElementById("modal-descripcion");
+            var imagen = document.getElementById("modal-imagen");
+            var link = document.getElementById("modal-link");
+
+            if (id === 1) {
+                titulo.textContent = "Arrow";
+                descripcion.textContent = "La serie sigue a Oliver Queen (Stephen Amell), el multimillonario playboy de Ciudad Starling, que es descubierto en la misteriosa isla de Lian Yu cinco años después de que naufragara con su padre. A su regreso a Ciudad Starling, se reúne con su madre, Moira Queen (Susanna Thompson), su hermana, Thea Queen (Willa Holland), y sus amigos, Tommy Merlyn (Colin Donnell) y Laurel Lance (Katie Cassidy). La serie cuenta con 8 temporadas y varios capitulos en conjunto con otras series para expander su universo.";
+                imagen.src = "logo1.jpeg";
+                link.href = "https://www.youtube.com/watch?v=1oUgKtYUPPw";
+            } else if (id === 2) {
+                titulo.textContent = "The Flash";
+                descripcion.textContent = "Un policía forense llamado Barry Allen (Grang Gustin) consigue el don de una velocidad sobrehumana tras ser golpeado por un rayo al tiempo que explota un acelerador de partículas.Tras unos meses en coma, Barry descubre esa habilidad que utiliza para luchar contra el crimen con el nombre de Flash, un héroe enmascarado vestido de rojo que colabora con el equipo de Laboratorios Star. La serie cuenta con 9 temporadas y varios capitulos en conjunto con otras series para expandir su universo";
+                imagen.src = "logo2.jpg";
+                link.href = "https://www.youtube.com/watch?v=IgVyroQjZbE";
+            } else if (id === 3) {
+                titulo.textContent = "Game of Thrones";
+                descripcion.textContent = " comienza quince años después de la guerra civil conocida como la «rebelión de Robert», con la cual Robert Baratheon expulsó del Trono de Hierro a los Targaryen y se proclamó gobernante de Poniente. Tiempo después, y tras la repentina muerte de la Mano del Rey, Jon Arryn, Robert invita a su amigo Eddard «Ned» Stark —Lord de Invernalia— a asumir el oficio vacante. Este último acepta y, tan pronto llega a Desembarco del Rey —la capital de Poniente y sede del Trono de Hierro—, va descubriendo la verdad detrás de una serie de intrigas y conspiraciones que involucran a otras familias nobiliarias y que están relacionadas con la tragedia de Arryn. Sin embargo, cuando Robert muere también repentinamente, los Lannister reclaman el poder y ejecutan a Stark para evitar la difusión de sus investigaciones. Estos acontecimientos desatan una guerra entre los reinos de Poniente que se extiende hasta el final de la serie, y a la cual eventualmente se suma Daenerys, la única superviviente de la casa Targaryen, que en el exilio reúne un vasto ejército y cría a tres dragones para reclamar el poder despojado a su familia tiempo atrás. Simultáneamente, más allá de los territorios de Poniente limitados por un muro de hielo que es vigilado por la Guardia de la Noche, otra amenaza se cierne sobre los siete reinos ante la llegada de criaturas sobrenaturales conocidas como «caminantes blancos» y guiadas por el denominado Rey de la Noche";
+                imagen.src = "game of thrones.jpeg";
+                link.href = "https://www.youtube.com/watch?v=bjqEWgDVPe0";
+            }else if (id === 4) {
+                titulo.textContent = "Peaky Blinders";
+                descripcion.textContent = "Peaky Blinders es una serie de televisión inglesa de drama histórico, emitida por el canal BBC Two. La serie está protagonizada por Cillian Murphy y se centra en una familia de gánsteres de Birmingham, durante los años veinte y del ascenso de su jefe, Thomas Shelby, un mafioso que dominará toda Inglaterra, después de afrontar una terrible guerra. Shelby, pese a ser un criminal y un mafioso, tiene rasgos antiheroicos, pues es un personaje ambivalente que, pese a su brutalidad, en muchas ocasiones es la única esperanza para terminar con otros villanos que pueden considerarse más viles y mezquinos que él.";
+                imagen.src = "peaky blinders.jpeg";
+                link.href = "https://www.youtube.com/watch?v=X3PGOaEfCmQ";
+            }else if (id === 5) {
+                titulo.textContent = "The Boys";
+                descripcion.textContent = "The Boys está ambientada en un universo en el que los individuos superpoderosos son reconocidos como héroes por el público en general y trabajan para la poderosa corporación Vought International, que los comercializa y monetiza. Fuera de sus personajes heroicos, la mayoría son arrogantes, egoístas y corruptos. La serie se centra principalmente en dos grupos: los Siete, el principal equipo de superhéroes de Vought International, y The Boys (lit. Los muchachos) como protagonistas, vigilantes que buscan derribar a Vought y a los superhéroes corruptos.";
+                imagen.src = "the boys.jpeg";
+                link.href = "https://www.youtube.com/watch?v=AD0qUhZpbfc";
+            }else if (id === 6) {
+                titulo.textContent = "The 100";
+                descripcion.textContent = "Noventa y siete años después de que un devastador apocalipsis nuclear aniquilara casi toda la vida en la Tierra, miles de personas ahora viven en una estación espacial que orbita la Tierra, que llaman el Arca. Tres generaciones han nacido en el espacio, llevando a la población del Arca más allá de su capacidad de carga. Cien detenidos juveniles son enviados a la Tierra en un último intento de determinar si es habitable. Descubren que algunos sobrevivieron al apocalipsis: los terrestres, que viven en clanes encerrados en una lucha de poder; los Grounders, otro grupo de terrestres que los Montañeses han convertido en caníbales; y los Montañeses, que viven en el Monte Weather, descendientes de aquellos que se encerraron antes del apocalipsis. Bajo el liderazgo de Bellamy y Clarke, los jóvenes intentan sobrevivir en las duras condiciones de la superficie, luchar contra los terrestres hostiles y establecer comunicación con el Arca.";
+                imagen.src = "los 100.png";
+                link.href = "https://www.youtube.com/watch?v=_edS1crSr2Q";
+            }else if (id === 7) {
+                titulo.textContent = "Avatar la leyenda de Ang";
+                descripcion.textContent = " Avatar: La Leyenda de Aang está ambientado en un mundo donde la civilización humana consta de cuatro naciones, nombradas por los cuatro elementos clásicos: las Tribus del Agua, el Reino Tierra, la Nación del Fuego y los Nómadas del Aire. En cada nación, ciertas personas, conocidas como maestros (maestros agua, maestros tierra, maestros fuego y maestros aire), tienen la capacidad de manipular y controlar telequinéticamente el elemento correspondiente a su nación, utilizando gestos basados en las artes marciales chinas. El Avatar es la única persona con la capacidad de controlar los cuatro elementos. El Avatar tiene como deber mantener la armonía y balance entre las cuatro naciones y actuar como mediador entre los humanos y los espíritus. Cuando el Avatar muere, su espíritu se reencarna en un nuevo cuerpo, que nacerá en la próxima nación en un orden establecido conocido como el ciclo Avatar: Nación del Fuego, Nómadas Aire, Tribu Agua, y luego Reino Tierra. Por tradición, un nuevo Avatar viajará por el mundo para aprender los cuatro elementos, después de lo cual comenzará en serio su papel de pacificador global. El Avatar puede entrar en una condición conocida como el Estado Avatar, en la que adquieren temporalmente las habilidades y el conocimiento de todas sus encarnaciones pasadas. Aunque aquí es cuando el Avatar es más poderoso, si el Avatar fuera a ser asesinado mientras está en el Estado Avatar, el ciclo de reencarnación terminaría y el Avatar nunca más renacería.";
+                imagen.src = "avatar la leyenda de ang.png";
+                link.href = "https://www.youtube.com/watch?v=ooVvH2IYz0w";
+            }else if (id === 8) {
+                titulo.textContent = "Final Space";
+                descripcion.textContent = "La historia relata las aventuras de un hombre llamado Gary Goodspeed, quien se enamora a primera vista de una capitana de la Guardia Infinito (guardian infinity) llamada Quinn y causa graves estragos a la flota estelar de esta al intentar impresionarla. Como consecuencia Gary es sentenciado a 5 años de trabajos espaciales en una nave espacial llamada Galaxia uno, integrada con una inteligencia artificial llamada H.U.E. y acompañado de K.V.N. como compañero para evitar la locura por soledad y a quien Gary odia desde que lo conoció. Un jueves Gary veía la película conocida como “La princesa prometida” sobre un satélite que acababa de reparar, cuando se topó con su mascota y amigo Mooncake, una especie de extraterrestre ovalado de color verde de quien se encariña y decide que lo acompañe. Lo que no sabe Gary es que Mooncake es un destruye-planetas que es buscado por el Lord Comandante, una pequeña criatura con poderes telepáticos que esta obsesionado con el espécimen E-351 (Mooncake) ya que lo necesita para abrir una brecha hacia la dimensión llamada Final Space. En esta, no se sabe por qué, codiciada dimensión se encuentran monstruosas criaturas que siembran terror y pánico destruyendo todo lo que pueden encontrar y peleando entre ellos para obtener más territorio: los Titanes.";
+                imagen.src = "final space.jpeg";
+                link.href = "https://www.youtube.com/watch?v=4EHbt_kSkG8";
+            }else if (id === 9) {
+                titulo.textContent = "Moral Orel";
+                descripcion.textContent = " El programa tiene lugar en el ficticia ciudad capital de Moralton, en el estado ficticio de Bible Belt Statesota. Según el globo mostrado en los créditos de apertura, Moralton es en el centro exacto de los Estados Unidos, con la iglesia de la ciudad en el centro exacto de la ciudad. El personaje principal es Orel Puppington, un estudiante de Escuela Elemental Alfred G. Diorama , quién intenta vivir por el fundamentalista protestante código moral cristiano cuando es articulado en iglesia o por su padre, Clay. Orel ingenuamente sigue este código hasta extremos desastrosos. La serie es una sátira de los arquetipos de vida suburbana americana Media, cultura de WASP del día moderno, y del fundamentalismo religioso.";
+                imagen.src = "moral orel.jpeg";
+                link.href = "https://www.youtube.com/watch?v=6L9HZcO7zJY&list=PLRMajfQ4tdufzqFcaIsTh6nt7UMXVkTVP";
+            }
+            
+        }
+
+        function cerrarDetalle() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
+
